@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-crypto-up: #16a34a;
+    --color-crypto-down: #dc2626;
+  }
+
+  body {
+    @apply transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-gray-900;
+  }
+}
+
+@layer components {
+  .crypto-card {
+    @apply bg-white rounded-lg shadow-sm p-4 border border-gray-200 transition-all duration-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200 transform hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 transition-colors duration-200 transform hover:scale-105;
+  }
+
+  .input-field {
+    @apply block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:placeholder-gray-400 transition-colors duration-200;
+  }
+
+  .crypto-price-up {
+    @apply text-crypto-success;
+  }
+
+  .crypto-price-down {
+    @apply text-crypto-danger;
+  }
+
+  .chart-container {
+    @apply w-full h-[400px] p-4 bg-white rounded-lg shadow-sm;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
