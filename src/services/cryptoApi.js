@@ -9,7 +9,7 @@ export const getCurrentPrices = async (tradingPairs) => {
   try {
     const ids = tradingPairs.map(pair => COIN_ID_MAP[pair]).filter(Boolean).join(',');
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
+      `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=inr&include_24hr_change=true`
     );
     
     if (!response.ok) {
@@ -25,8 +25,8 @@ export const getCurrentPrices = async (tradingPairs) => {
       const symbol = COIN_SYMBOL_MAP[pair];
       if (id && data[id]) {
         prices[symbol] = {
-          usd: data[id].usd,
-          usd_24h_change: data[id].usd_24h_change
+          usd: data[id].inr,
+          usd_24h_change: data[id].inr_24h_change
         };
       }
     });
@@ -50,7 +50,7 @@ export const getHistoricalData = async (tradingPair, days = 7) => {
     if (!id) throw new Error(`Unsupported trading pair: ${tradingPair}`);
 
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=inr&days=${days}&interval=daily`
     );
 
     if (!response.ok) {
@@ -79,7 +79,7 @@ export const getMarketData = async (tradingPairs) => {
   try {
     const ids = tradingPairs.map(pair => COIN_ID_MAP[pair]).filter(Boolean).join(',');
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&ids=${ids}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`
     );
 
     if (!response.ok) {

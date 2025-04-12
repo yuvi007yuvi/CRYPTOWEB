@@ -134,7 +134,7 @@ export default function Trading() {
       }
 
       await addDoc(collection(db, 'trades'), trade)
-      alert(`Trade executed successfully!\n\nDetails:\n${side.toUpperCase()} ${tradeAmount} ${selectedPair.symbol.split('/')[0]}\nPrice: $${tradePrice.toFixed(2)}\nTotal: $${total.toFixed(2)}`)
+      alert(`Trade executed successfully!\n\nDetails:\n${side.toUpperCase()} ${tradeAmount} ${selectedPair.symbol.split('/')[0]}\nPrice: ₹${tradePrice.toFixed(2)}\nTotal: ₹${total.toFixed(2)}`)
 
       // Reset form
       setAmount('')
@@ -181,7 +181,7 @@ export default function Trading() {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-2xl font-bold">
-                  ${currentPrice ? currentPrice.toFixed(2) : '0.00'}
+                  ₹{currentPrice ? currentPrice.toFixed(2) : '0.00'}
                 </span>
                 {priceChange24h && (
                   <span className={`ml-2 text-sm font-semibold ${priceChange24h >= 0 ? 'text-crypto-success' : 'text-crypto-danger'}`}>

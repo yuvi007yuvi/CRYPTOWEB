@@ -6,8 +6,8 @@ import { getMarketData } from '../../services/cryptoApi'
 const TRADING_PAIRS = ['BTC/USDT', 'ETH/USDT', 'BNB/USDT']
 
 const initialStats = [
-  { name: 'Total Balance', value: '$0.00', change: '0%', icon: CurrencyDollarIcon },
-  { name: 'Total Profit/Loss', value: '$0.00', change: '0%', icon: ArrowTrendingUpIcon },
+  { name: 'Total Balance', value: '₹0.00', change: '0%', icon: CurrencyDollarIcon },
+  { name: 'Total Profit/Loss', value: '₹0.00', change: '0%', icon: ArrowTrendingUpIcon },
   { name: '24h Change', value: '0%', change: null, icon: ArrowTrendingDownIcon },
 ]
 
@@ -31,13 +31,13 @@ export default function Dashboard() {
         setStats([
           {
             name: 'Total Balance',
-            value: `$${totalBalance.toFixed(2)}`,
+            value: `₹${totalBalance.toFixed(2)}`,
             change: `${totalChange >= 0 ? '+' : ''}${totalChange.toFixed(2)}%`,
             icon: CurrencyDollarIcon
           },
           {
             name: 'Total Profit/Loss',
-            value: `$${(totalBalance * (totalChange / 100)).toFixed(2)}`,
+            value: `₹${(totalBalance * (totalChange / 100)).toFixed(2)}`,
             change: `${totalChange >= 0 ? '+' : ''}${totalChange.toFixed(2)}%`,
             icon: ArrowTrendingUpIcon
           },

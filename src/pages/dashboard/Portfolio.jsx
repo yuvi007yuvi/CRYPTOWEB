@@ -5,11 +5,8 @@ import { getMarketData } from '../../services/cryptoApi'
 
 const TRADING_PAIRS = ['BTC/USDT', 'ETH/USDT', 'BNB/USDT']
 
-const PORTFOLIO_HOLDINGS = {
-  'BTC': '0.15',
-  'ETH': '2.5',
-  'BNB': '5.0'
-}
+// Portfolio holdings will be fetched from Firebase
+const PORTFOLIO_HOLDINGS = {}
 
 export default function Portfolio() {
   const { user } = useAuthState()
@@ -92,14 +89,14 @@ export default function Portfolio() {
             <div>
               <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200">Total Value</dt>
               <dd className="mt-1 text-3xl font-semibold text-gray-900 dark:text-white transition-colors duration-200">
-                ${totalValue.toFixed(2)}
+                ₹{totalValue.toFixed(2)}
               </dd>
             </div>
             <div>
               <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 transition-colors duration-200">24h Change</dt>
               <dd className={`mt-1 text-3xl font-semibold ${dayChange.value >= 0 ? 'text-crypto-success dark:text-green-400' : 'text-crypto-danger dark:text-red-400'} transition-colors duration-200`}>
                 {dayChange.value >= 0 ? '+' : ''}
-                ${Math.abs(dayChange.value).toFixed(2)} ({dayChange.percentage >= 0 ? '+' : ''}{dayChange.percentage.toFixed(2)}%)
+                ₹{Math.abs(dayChange.value).toFixed(2)} ({dayChange.percentage >= 0 ? '+' : ''}{dayChange.percentage.toFixed(2)}%)
               </dd>
             </div>
             <div>
@@ -162,10 +159,10 @@ export default function Portfolio() {
                         {asset.amount}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white transition-colors duration-200">
-                        ${asset.price.toFixed(2)}
+                        ₹{asset.price.toFixed(2)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white transition-colors duration-200">
-                        ${asset.value.toFixed(2)}
+                        ₹{asset.value.toFixed(2)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className={`flex items-center text-sm ${asset.change24h >= 0 ? 'text-crypto-success dark:text-green-400' : 'text-crypto-danger dark:text-red-400'} transition-colors duration-200`}>

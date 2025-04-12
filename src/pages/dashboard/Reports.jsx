@@ -5,31 +5,7 @@ import { getMarketData } from '../../services/cryptoApi'
 import { collection, query, where, getDocs } from 'firebase/firestore'
 import { db } from '../../config/firebase'
 
-// Initialize empty trade history
-const tradeHistory = [
-  {
-    id: 1,
-    date: '2023-08-15T13:45:00Z',
-    pair: 'BTC/USDT',
-    type: 'buy',
-    price: 29850.00,
-    amount: 0.05,
-    total: 1492.50,
-    fee: 1.49,
-    pnl: 74.63,
-  },
-  {
-    id: 2,
-    date: '2023-08-15T10:30:00Z',
-    pair: 'ETH/USDT',
-    type: 'sell',
-    price: 1850.00,
-    amount: 2.5,
-    total: 4625.00,
-    fee: 4.63,
-    pnl: -231.25,
-  },
-]
+// Trade history will be fetched from Firebase
 
 const initialMetrics = [
   { name: 'Total Trades', value: '0' },
@@ -74,10 +50,10 @@ export default function Reports() {
         setPerformanceMetrics([
           { name: 'Total Trades', value: totalTrades.toString() },
           { name: 'Win Rate', value: `${winRate.toFixed(1)}%` },
-          { name: 'Best Trade', value: `$${bestTrade.toFixed(2)}` },
-          { name: 'Worst Trade', value: `$${worstTrade.toFixed(2)}` },
-          { name: 'Average Trade', value: `$${avgTrade.toFixed(2)}` },
-          { name: 'Total Volume', value: `$${totalVolume.toLocaleString()}` },
+          { name: 'Best Trade', value: `₹${bestTrade.toFixed(2)}` },
+          { name: 'Worst Trade', value: `₹${worstTrade.toFixed(2)}` },
+          { name: 'Average Trade', value: `₹${avgTrade.toFixed(2)}` },
+          { name: 'Total Volume', value: `₹${totalVolume.toLocaleString()}` },
         ])
       } catch (error) {
         console.error('Error fetching market data:', error)
